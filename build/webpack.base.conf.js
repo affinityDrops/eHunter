@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const GenerateJsonPlugin = require('generate-json-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -91,7 +91,8 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js',
             'src': resolve('src'),
             'core': resolve('core')
-        }
+        },
+        fallback: { timers: false }
     },
     plugins: [
         new VueLoaderPlugin(),
