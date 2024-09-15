@@ -29,7 +29,7 @@ export abstract class AlbumService {
     abstract supportThumbView(): boolean;
 
     getBookScreenCount(pageCount: number, screenSize: number): number {
-        return Math.floor(pageCount / screenSize);
+        return Math.ceil(pageCount / screenSize);
     }
 
     getRealCurIndexInfo(pageCount: number, curIndex: IndexInfo): IndexInfo {
