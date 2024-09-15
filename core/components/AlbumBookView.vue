@@ -140,7 +140,7 @@ export default {
                 }),
                 { id: tags.ID_END, type: tags.TYPE_END, imgPageInfo: { heightOfWidth: 1.45 } }
             ];
-            if (!this.oddEven) {
+            if (this.bookScreenSize > 1 && !this.oddEven) {
               result.unshift({ id: tags.ID_START, type: tags.TYPE_START, imgPageInfo: { heightOfWidth: 1.45 } });
             }
             return result;
@@ -209,13 +209,10 @@ export default {
         },
 
         getScreenIndexByPageIndex(pageIndex) {
-            if (pageIndex === 0 || pageIndex === 1) {
-                return 0;
-            } else {
-                let index = pageIndex + 2;
-                let remainder = index % this.bookScreenSize;
-                return (index - remainder) / this.bookScreenSize;
+            if (state.book.screenSize > 1 && !state.book.oddEven) {
+                ++pageIndex;
             }
+            return Math.floor(idx / state.book.screenSize);
         },
 
         getScreenStyle(screen) {
