@@ -259,6 +259,11 @@ export default {
         en: 'Reset cache and data',
         jp: 'Reset cache and data'
     },
+    introTip: {
+        cn: 'Go to the gallery intro',
+        en: 'Go to the gallery intro',
+        jp: 'Go to the gallery intro',
+    },
     githubTip: {
         cn: '前往项目主页(Github)',
         en: 'Go to the project home page(Github)',
