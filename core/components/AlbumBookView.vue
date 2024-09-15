@@ -222,9 +222,11 @@ export default {
             let style = {};
             let index = this.screens.indexOf(screen);
             if (index < this.bookIndex) {
-                style.left = '-100%';
+                // style.left = '-100%';
+                style.opacity = 0;
             } else if (index > this.bookIndex) {
-                style.left = '100%';
+                // style.left = '100%';
+                style.opacity = 0;
             }
             style['padding-top'] = this.showTopBar ? this.px(this.topBarHeight) : 'initial';
             return style;
