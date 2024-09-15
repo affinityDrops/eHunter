@@ -87,16 +87,22 @@ export default {
             readingMode: 'readingMode',
             bookIndex: 'bookIndex',
             bookScreenSize: 'bookScreenSize',
+            oddEven: 'oddEven',
             string: 'string'
         }),
         location() {
-            let bookScreenCount = this.service.album.getBookScreenCount(this.pageCount, this.bookScreenSize);
             switch (this.readingMode) {
                 case 0:
                     return `${this.curIndex.val + 1} / ${this.pageCount}`;
-                case 1:
+                case 1: {
+                    let effectivePageCount = this.pageCount + 1;
+                    if (this.bookScreenSize > 1 && !this.oddEven) {
+                        ++effectivePageCount;
+                    }
+                    let bookScreenCount = this.service.album.getBookScreenCount(effectivePageCount, this.bookScreenSize);
                     return `${this.bookIndex + 1} / 
                     ${bookScreenCount}`;
+                }
             }
         }
     },
